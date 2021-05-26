@@ -1,0 +1,104 @@
+<html>
+
+<head>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='./styles.css' rel='stylesheet' type='text/css'>
+
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<body>
+
+<center>
+<h1>Scandal Season 1</h1>
+</center>
+<p class="descrip">
+Data sourced from <a target="_blank" href="https://transcripts.foreverdreaming.org/viewforum.php?f=33">https://transcripts.foreverdreaming.org/viewforum.php?f=33.</a>
+</p>
+<div class="grid-container scroll">
+  <div id="textbox"></div>
+  <div id="container"></div>
+  <div id="placeholder"></div>
+  <div id="writeup">
+    <h2>Writeup</h2>
+    <h3>Motivation</h3>
+    After binge-watching a couple of TV series over my staycation during spring break, I figured it might be an interesting task to try to visualize television scripts.
+    I scoped this project into simply collecting some high-level metrics on speaker line length and twosome speaker interactions. However, with this data, you could also
+    discover qualities about the nature of the speech as well to create more interesting visualizations.
+
+    The input data lives in the data/ folder and they are structured in .txt files.
+    <h3>Design decisions</h3>
+    <p>
+      For this assignment, I knew I wanted to show how two characters were
+      related to each other, but had to do some thinking in how I would show
+      that relation. Relative frequency was what I ended up with in the final iteration,
+      where the shading of the cell is determined by two inputs:
+      <ol>
+        <li>the number of scenes the two characters have co-appeared</li>
+        <li>the total number of scenes for the character who has appeared less, across the entire season</li>
+      </ol>
+      This was the best I could come up with to effectively show how two characters are "related", given the script data that I had on hand.
+
+
+      <div class="grid-container">
+        <div>
+          <p>
+          <b>Design point 1</b>: <br> Initially, I considered coloring the grid with the average of the counted lines from the two characters. However,
+          this shows a trivial, non-interesting relationship between the two characters as the count for each character was computed separately (not together, as relative frequency will do).
+          This skews the color towards characters who simply talk in the most scenes overall, as observed. In the final iteration, you can see that we colored the cells the
+          proposed relative frequency metric.
+
+        </p>
+        <p>
+         <b>Design point 2</b>: <br> Since there is symmetry in this matrix, half the grid is unnecessary.
+        Tufte recommends minimizing data ink, so following his suggestions, I've cut the space in half and omitted the labels of one axis completely.
+        The 45 degree rotation is done mainly for aesthetic pleasure, but I think there's a nice side effect in that the user
+        can better see that the label applies to both axes.</p>
+      </div>
+        <div>
+        <img src="./imgs/rawcounts.png"></img>
+      </div>
+
+      <div>
+        <img src="./imgs/captions.png"></img>
+
+      </div>
+
+      <div>
+      The scenic lines minimap zoom interaction was a fun last-minute add when I realized that the graphic showing
+      individual lines of speakers had the lines overlapping each other, just because there were so many lines and so
+      little screen real-estate. I left them overlapping each other, and simply made it possible to zoom in on smaller
+      spaces with the minimap. I made the minimap zoomable instead of the original scene lines, because I wanted to retain
+      the ability to hover over the individual lines to see what the actual line text is.
+
+      With the paired example on the right, I've hovered over the longest orange line to show Mellie's longest speech
+      (measured by number of words). This is a good way to identify outliers and see if you can find the people
+      who monologue the most :-P.
+    </div>
+
+      </div>
+    </p>
+    <h3>Development process</h3>
+    <p>
+    Each component of the visualization was created separately, and then pieced together by the interaction support.
+    The most tedious part was making sure things were aligned correctly given that the components were constructed in silos.
+    The heatmap took the most amount of time, roughly 75% of this development, as I was trying to figure out how to
+    actually create the matrix. I eventually just created a grid made up of squares laid neatly against each other.
+</p>
+    <p>The project took about 10 hours to complete, with some time taken to put in final tweaks to make sure things were
+      neatly laid out, and that given a couple of different screen sizes, none of the components would be cut off.
+    </p>
+    <p>
+    I did not guide the user through the interactive features of this visualization. However, I hope that it is intuitive to discover them.
+    The brushing (crosshair pointer), hovering (highlighting of the half-matrix and hovering over the scene lines), and cross-filtering (clicking a matrix cell) are, to me, natural,
+    and I hope they are to the user as well. Future work on the design could include a little more thought into the guidance of using the included features.
+  </p>
+  </div>
+</div>
+
+</body>
+
+</html>
+<script src="scenes.js"></script>

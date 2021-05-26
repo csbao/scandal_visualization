@@ -1,0 +1,89 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    /*background-color: #1b1b1c;*/
+    background-color: white;
+}
+
+/* .gfg {
+               width:auto;
+               text-align:center;
+               padding:20px;
+           } */
+
+
+img {
+             max-width: 100%;
+             height: auto;
+         }
+
+/* // css-grid: https://www.w3schools.com/css/tryit.asp?filename=trycss_grid
+// https://css-tricks.com/snippets/css/complete-guide-grid/ */
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto; // 20vw 40vw for me because I have dt and dd
+  padding: 10px;
+  text-align: left;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-container > div {
+  padding: 20px;
+}
+
+.minimap {
+  stroke-width: 1px;
+  /* stroke: gold; */
+}
+.heatmap {
+  stroke: gold;
+  stroke-width: 1px;
+  /* fill: #CF7D1C; */
+}
+.arc {
+  stroke: #9A8B7A;
+  fill: none;
+}
+.node {
+  fill: #EBD8C1;
+  stroke: #9A8B7A;
+  stroke-width: 1px;
+}
+text {
+  font-family: "Lato", Times, serif;
+
+  font-size: 8px;
+}
+#textbox {
+  line-height: 1;
+  padding: 7px;
+  color: #000;
+  border-radius: 1px;
+  /* height: 40%;
+  width: 40%; */
+  height: 200px;
+  width: 200px;
+  font-family: "Lato", Times, serif;
+  position: relative;
+  /* text-align: left; */
+}
+
+.descrip {
+  line-height: -10;
+  /* padding: 7px; */
+  color: #000;
+  font-family: "Lato", Times, serif;
+  text-align: right;
+}
+
+.scroll { overflow-x : scroll ;}
+
+#gridlegend {
+  border-radius: 1px;
+  color: "black"
+}
+
+.miniscene_lines, .scene_lines {
+  opacity: 0.4
+}
